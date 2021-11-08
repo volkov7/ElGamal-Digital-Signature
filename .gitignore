@@ -1,4 +1,6 @@
 *.idea
+elgamal
+elgamal.pub
 
 # Compiled class file
 *.class

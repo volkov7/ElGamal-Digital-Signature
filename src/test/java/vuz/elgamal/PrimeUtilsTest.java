@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.math.BigInteger;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class PrimeUtilsTest {
 
@@ -36,5 +36,14 @@ public class PrimeUtilsTest {
     public void isPrimeTest256BitComposite() {
         BigInteger prime = new BigInteger("9889948815488436816384279237429048107101076749293300249261929871340230212059029980727015514604209277241674619203119627712871406905497819926494136501920562791237509891649175990984634829780582020406098700551046971371347511006218984196165261746963272966735506");
         assertEquals(Boolean.FALSE, PrimeUtils.isPrime(prime, 256));
+    }
+
+    @Test
+    public void generateBigIntegerInRangeTest() {
+        BigInteger max = new BigInteger("500");
+        BigInteger min = new BigInteger("100");
+        BigInteger n = PrimeUtils.generateBigIntegerInRange(min, max);
+
+        assertEquals(Boolean.TRUE, n.compareTo(min) > 0 && n.compareTo(max) < 0);
     }
 }
