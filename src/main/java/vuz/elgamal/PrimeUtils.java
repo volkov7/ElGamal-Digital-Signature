@@ -43,6 +43,12 @@ public class PrimeUtils {
         return Boolean.TRUE;
     }
 
+    /**
+     * return exponent of 2 such as n = 2^s * x.
+     *
+     * @param n input number.
+     * @return exponent
+     */
     private static int findS(BigInteger n) {
         int s = 0;
 
