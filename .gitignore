@@ -1,6 +1,7 @@
 *.idea
-elgamal
-elgamal.pub
+# '/' used to ignore only file elgamal not directory elgamal
+/src/test/java/vuz/elgamal/data/elgamal
+src/test/java/vuz/elgamal/data/elgamal.pub
 
 # Compiled class file
 *.class

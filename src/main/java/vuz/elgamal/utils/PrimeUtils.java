@@ -1,4 +1,4 @@
-package vuz.elgamal;
+package vuz.elgamal.utils;
 
 import java.math.BigInteger;
 import java.util.Random;

@@ -1,6 +1,7 @@
 package vuz.elgamal;
 
 import org.junit.Test;
+import vuz.elgamal.utils.PrimeUtils;
 
 import java.math.BigInteger;
 
