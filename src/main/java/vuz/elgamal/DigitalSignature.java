@@ -55,7 +55,7 @@ public class DigitalSignature {
     }
 
     /**
-     * Verify sign
+     * Verify sign.
      *
      * @param signedFile name of signed file.
      * @param publicKey name of file with public key.

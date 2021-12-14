@@ -14,6 +14,14 @@ public class BinaryUtils {
 
     private static final byte[] SIGNATURE = new byte[]{(byte) 0xde, (byte) 0xad, (byte) 0xbe, (byte) 0xef};
 
+    /**
+     * Wrap array of byte to signature.
+     * Example: deadbeef | [var] | [value] | deadbeef
+     *
+     * @param bytes data to wrap.
+     * @param var special character for mapping data.
+     * @return wrapped array of bytes.
+     */
     public static byte[] wrapToSignature(byte[] bytes, byte var) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
