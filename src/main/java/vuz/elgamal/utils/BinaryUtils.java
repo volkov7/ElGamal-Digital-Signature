@@ -111,6 +111,7 @@ public class BinaryUtils {
         int start;
         int end = 0;
 
+        checkLastBytes(data);
         while (end + SIGNATURE.length < copy.length) {
             start = indexOfSignature(copy, SIGNATURE);
             if (start == -1) {
@@ -123,6 +124,12 @@ public class BinaryUtils {
             copy = Arrays.copyOfRange(copy, start + end + SIGNATURE.length, copy.length);
         }
         return convert(params);
+    }
+
+    private static void checkLastBytes(byte[] data) throws FileCorruptedOrFalsify {
+        if (!Arrays.equals(SIGNATURE, Arrays.copyOfRange(data, data.length - 4, data.length))) {
+            throw new FileCorruptedOrFalsify("File corrupted or falsify!");
+        }
     }
 
     /**

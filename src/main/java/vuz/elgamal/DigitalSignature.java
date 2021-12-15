@@ -43,6 +43,7 @@ public class DigitalSignature {
             byte[] message = readAllFile(fileName);
             byte[] privateKeyData = readAllFile(privateKey);
             Map<String, BigInteger> params = BinaryUtils.parseParams(privateKeyData);
+            verifyParams(params, "Private key corrupted!","P", "G", "X");
 
             byte[] signedMsg = getSignedMessage(message, params.get("P"), params.get("G"), params.get("X"));
 
@@ -67,6 +68,7 @@ public class DigitalSignature {
         Map<String, BigInteger> params = BinaryUtils.parseParams(data);
 
         params.putAll(BinaryUtils.parseParams(keyData));
+        verifyParams(params, "File corrupted or falsify!","P", "G", "Y", "A", "B");
 
         BigInteger f1 = calculateF1(message, params.get("G"), params.get("P"));
         BigInteger f2 = calculateF2(params.get("Y"), params.get("A"), params.get("B"), params.get("P"));
@@ -86,6 +88,14 @@ public class DigitalSignature {
             data = null;
         }
         return data;
+    }
+
+    private void verifyParams(Map<String, BigInteger> params, String msg, String... check) throws FileCorruptedOrFalsify {
+        for (String param : check) {
+            if (params.get(param) == null) {
+                throw new FileCorruptedOrFalsify(msg);
+            }
+        }
     }
 
     private byte[] getSignedMessage(byte[] message, BigInteger p, BigInteger g, BigInteger x) throws IOException {
